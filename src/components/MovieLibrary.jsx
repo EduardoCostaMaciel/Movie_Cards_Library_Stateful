@@ -1,13 +1,3 @@
-// 15 - Crie um componente chamado <MovieLibrary />
-// Esse componente renderizará a biblioteca de filmes que renderizará a searchBar e o addMovies para filtrar por filmes e adicionar um filme à biblioteca respectivamente.
-
-// <MovieLibrary /> deve receber como props:
-
-// movies, um array
-// O que será verificado:
-
-// Será validado se o componente é renderizado com sucesso
-
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import SearchBar from './SearchBar';
