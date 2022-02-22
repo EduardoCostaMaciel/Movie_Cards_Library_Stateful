@@ -1,6 +1,3 @@
-// <AddMovie /> deve receber como prop:
-
-// onClick, uma callback
 import React from 'react';
 import PropTypes from 'prop-types';
 
