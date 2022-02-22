@@ -2,6 +2,7 @@
 
 // onClick, uma callback
 import React from 'react';
+import PropTypes from 'prop-types';
 
 class AddMovie extends React.Component {
   constructor() {
@@ -22,6 +23,19 @@ class AddMovie extends React.Component {
 
     this.setState({ [name]: name === 'rating' ? Number(value) : value });
   };
+
+  handleClick = () => {
+    const { onClick } = this.props;
+    onClick(this.state);
+    this.setState({
+      subtitle: '',
+      title: '',
+      imagePath: '',
+      storyline: '',
+      rating: 0,
+      genre: 'action',
+    });
+  }
 
   handleSubTitle = () => {
     const { subtitle } = this.state;
@@ -121,6 +135,16 @@ class AddMovie extends React.Component {
     );
   }
 
+  handleButtonSubmit = () => (
+    <button
+      type="button"
+      onClick={ this.handleClick }
+      data-testid="send-button"
+    >
+      Adicionar filme
+    </button>
+  )
+
   render() {
     return (
       <div>
@@ -131,10 +155,19 @@ class AddMovie extends React.Component {
           {this.handleStoryLine()}
           {this.handleRating()}
           {this.handleGenre()}
+          {this.handleButtonSubmit()}
         </form>
       </div>
     );
   }
 }
+
+AddMovie.defaultProps = {
+  onClick: 'func',
+};
+
+AddMovie.propTypes = {
+  onClick: PropTypes.func,
+};
 
 export default AddMovie;
