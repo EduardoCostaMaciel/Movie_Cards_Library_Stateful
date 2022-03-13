@@ -5,13 +5,15 @@ import AddMovie from './AddMovie';
 import MovieList from './MovieList';
 
 class MovieLibrary extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
+    const { movies } = this.props;
 
     this.state = {
       searchText: '',
       bookmarkedOnly: false,
       selectedGenre: '',
+      movies,
     };
   }
 
@@ -24,9 +26,14 @@ class MovieLibrary extends Component {
     });
   };
 
+  handleAddMovie = (newMovies) => {
+    this.setState((previousState) => ({ movies: [...previousState.movies, newMovies] }));
+  }
+
   render() {
-    const { movies } = this.props;
-    const { searchText, bookmarkedOnly, selectedGenre } = this.state;
+    const { searchText, bookmarkedOnly, selectedGenre, movies } = this.state;
+
+    // bookmarkedOnly ? <MovieList movies={ true } /> : <MovieList movies={ movies } />;
 
     return (
       <div>
@@ -40,7 +47,7 @@ class MovieLibrary extends Component {
           onSelectedGenreChange={ this.handleChange }
         />
         <MovieList movies={ movies } />
-        <AddMovie />
+        <AddMovie onClick={ this.handleAddMovie } />
       </div>
     );
   }
