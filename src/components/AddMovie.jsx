@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import '../App.css';
+
 class AddMovie extends React.Component {
   constructor() {
     super();
@@ -32,12 +34,16 @@ class AddMovie extends React.Component {
       rating: 0,
       genre: 'action',
     });
-  }
+  };
 
   handleSubTitle = () => {
     const { subtitle } = this.state;
     return (
-      <label htmlFor="subtitulo" data-testid="subtitle-input-label">
+      <label
+        className="form-label-container addMovie-form-container-subtitle "
+        htmlFor="subtitulo"
+        data-testid="subtitle-input-label"
+      >
         Subtítulo
         <input
           type="text"
@@ -48,12 +54,16 @@ class AddMovie extends React.Component {
         />
       </label>
     );
-  }
+  };
 
   handleTitle = () => {
     const { title } = this.state;
     return (
-      <label htmlFor="título" data-testid="title-input-label">
+      <label
+        className="form-label-container"
+        htmlFor="título"
+        data-testid="title-input-label"
+      >
         Título
         <input
           type="text"
@@ -64,12 +74,16 @@ class AddMovie extends React.Component {
         />
       </label>
     );
-  }
+  };
 
   handleImagePath = () => {
     const { imagePath } = this.state;
     return (
-      <label htmlFor="imagem" data-testid="image-input-label">
+      <label
+        className="form-label-container"
+        htmlFor="imagem"
+        data-testid="image-input-label"
+      >
         Imagem
         <input
           type="text"
@@ -80,12 +94,16 @@ class AddMovie extends React.Component {
         />
       </label>
     );
-  }
+  };
 
   handleStoryLine = () => {
     const { storyline } = this.state;
     return (
-      <label htmlFor="sinopse" data-testid="storyline-input-label">
+      <label
+        className="form-label-container"
+        htmlFor="sinopse"
+        data-testid="storyline-input-label"
+      >
         Sinopse
         <textarea
           name="storyline"
@@ -95,12 +113,16 @@ class AddMovie extends React.Component {
         />
       </label>
     );
-  }
+  };
 
   handleRating = () => {
     const { rating } = this.state;
     return (
-      <label htmlFor="avaliação" data-testid="rating-input-label">
+      <label
+        className="form-label-container-rating"
+        htmlFor="avaliação"
+        data-testid="rating-input-label"
+      >
         Avaliação
         <input
           type="number"
@@ -111,12 +133,16 @@ class AddMovie extends React.Component {
         />
       </label>
     );
-  }
+  };
 
   handleGenre = () => {
     const { genre } = this.state;
     return (
-      <label htmlFor="gênero" data-testid="genre-input-label">
+      <label
+        className="form-label-container-rating"
+        htmlFor="gênero"
+        data-testid="genre-input-label"
+      >
         Gênero
         <select
           name="genre"
@@ -124,37 +150,44 @@ class AddMovie extends React.Component {
           onChange={ this.handleChange }
           data-testid="genre-input"
         >
-          <option data-testid="genre-option" value="action">Ação</option>
-          <option data-testid="genre-option" value="comedy">Comédia</option>
-          <option data-testid="genre-option" value="thriller">Suspense</option>
+          <option data-testid="genre-option" value="action">
+            Ação
+          </option>
+          <option data-testid="genre-option" value="comedy">
+            Comédia
+          </option>
+          <option data-testid="genre-option" value="thriller">
+            Suspense
+          </option>
         </select>
       </label>
     );
-  }
+  };
 
   handleButtonSubmit = () => (
     <button
       type="button"
-      onClick={ this.handleClick }
       data-testid="send-button"
+      className="addMovie-form-button"
+      onClick={ this.handleClick }
     >
       Adicionar filme
     </button>
-  )
+  );
 
   render() {
     return (
-      <div>
-        <form data-testid="add-movie-form">
+      <>
+        <form className="addMovie-form" data-testid="add-movie-form">
           {this.handleSubTitle()}
           {this.handleTitle()}
           {this.handleImagePath()}
           {this.handleStoryLine()}
           {this.handleRating()}
           {this.handleGenre()}
-          {this.handleButtonSubmit()}
         </form>
-      </div>
+        {this.handleButtonSubmit()}
+      </>
     );
   }
 }
