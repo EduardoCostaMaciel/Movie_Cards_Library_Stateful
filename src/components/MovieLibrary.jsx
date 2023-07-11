@@ -49,8 +49,12 @@ class MovieLibrary extends Component {
     const { searchText, bookmarkedOnly, selectedGenre, movies } = this.state;
 
     return (
-      <div>
-        <h2> My awesome movie library </h2>
+      <>
+        <h2
+          style={ { fontSize: '1.6rem', textAlign: 'center', paddingTop: 8 } }
+        >
+          My awesome movie library
+        </h2>
         <SearchBar
           searchText={ searchText }
           onSearchTextChange={ this.handleChange }
@@ -66,7 +70,7 @@ class MovieLibrary extends Component {
         />
         {/* <MovieList movies={ movies } /> */}
         <AddMovie onClick={ this.handleAddMovie } />
-      </div>
+      </>
     );
   }
 }
